@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Tracking - Ink and Arch</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/timetracking.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    /* Employee QR Actions Styles */
+    .employee-qr-actions {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      display: none;
+    }
+
+    .qr-actions-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .qr-actions-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #cbd5e1 20%, #cbd5e1 80%, transparent 100%);
+    }
+
+    .qr-actions-divider span {
+      background: #f8fafc;
+      padding: 0 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .qr-buttons-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .clock-qr {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 180px;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+    }
+
+    .clock-qr:hover:not(:disabled) {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+    }
+
+    .clock-qr:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(59, 130, 246, 0.3);
+    }
+
+    .clock-qr:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .clock-qr svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .qr-buttons-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .clock-qr {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <svg width="24"
+             height="24"
+             viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12h18M3 6h18M3 18h18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+        </svg>
+    </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        </svg>
+        <span class="logo-text">
+                  <img src="whiteink.png" alt="error" width="200" height="100" />
+              </span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Dashboard
+      </a>
+
+      <a href="patients.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Patients
+      </a>
+
+      <a href="inventory.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="3.27,6.96 12,12.01 20.73,6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Inventory
+      </a>
+
+      <a href="employees.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Employees
+      </a>
+
+      <a href="timetracking.html" class="sidebar-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Time Tracking
+      </a>
+
+      <a href="records.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Records
+      </a>
+
+      <a href="logs.html" class="sidebar-item" id="logsNavItem" style="display: none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" />
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Audit Logs
+      </a>
+
+      <!-- Employee-Exclusive Quick Clock Button -->
+      <div class="employee-exclusive-section" id="employeeQuickActions" style="display: none;">
+        <div class="sidebar-divider"></div>
+        <div class="exclusive-label">Employee Actions</div>
+
+        <button class="sidebar-item employee-quick-clock" id="employeeQuickClockBtn">
+                  <svg width="20"
+                       height="20"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                      <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M16 12l-4-4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+                  </svg>
+                  <span id="quickClockButtonText">Quick Clock In</span>
+              </button>
+
+        <button class="sidebar-item employee-attendance-view" id="employeeViewAttendanceBtn">
+                  <svg width="20"
+                       height="20"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                  My Attendance
+              </button>
+
+        <button class="sidebar-item employee-show-qr" id="employeeShowQRBtn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none" />
+                      <rect x="16" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none" />
+                      <rect x="3" y="16" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none" />
+                      <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                  Show QR
+              </button>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-details">
+          <span class="user-name" id="userName">Admin</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+              <svg width="16"
+                   height="16"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                  <polyline points="16,17 21,12 16,7"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                  <line x1="21"
+                        y1="12"
+                        x2="9"
+                        y2="12"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+              </svg>
+          </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="timetracking-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="page-title" data-translate="Time Tracking">Time Tracking</h1>
+          <p class="page-subtitle" data-translate="Track employee work hours and manage attendance">
+            Track employee work hours and manage attendance
+          </p>
+        </div>
+        <div class="header-right">
+          <div class="current-time">
+            <div class="time-display">
+              <span id="currentTime"></span>
+            </div>
+            <div class="date-display">
+              <span id="currentDate"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Employee Clock Interface -->
+    <section class="clock-section">
+      <div class="clock-interface">
+        <div class="clock-header">
+          <h2>Employee Time Clock</h2>
+          <div class="qr-scan-container">
+            <button class="btn btn-primary btn-large" id="qrScanBtn">
+                            <svg width="24"
+                                 height="24"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3"
+                                      y="3"
+                                      width="5"
+                                      height="5"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      fill="none" />
+                                <rect x="16"
+                                      y="3"
+                                      width="5"
+                                      height="5"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      fill="none" />
+                                <rect x="3"
+                                      y="16"
+                                      width="5"
+                                      height="5"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      fill="none" />
+                            </svg>
+                            QR Scan
+                        </button>
+            <button class="btn btn-secondary btn-large" id="manageTimeSettingsBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" stroke="currentColor" stroke-width="2"/>
+                              <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Manage Time Tracking
+                        </button>
+          </div>
+        </div>
+
+        <!-- Employees Table -->
+        <div class="employees-table-container">
+          <table class="employees-table" id="employeesTable">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="employeesTableBody">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="clock-actions" id="clockActions" style="display: none">
+          <div class="selected-employee" id="selectedEmployee">
+            <!-- Employee info will be populated here -->
+          </div>
+
+          <div class="current-session" id="currentSession">
+            <!-- Session info will be populated here -->
+          </div>
+
+          <div class="clock-buttons">
+            <button class="clock-btn clock-in" id="clockInBtn">
+                            <svg width="24"
+                                 height="24"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="2" />
+                                <polyline points="12,6 12,12 16,14"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+                            </svg>
+                            Clock In
+                        </button>
+
+            <button class="clock-btn clock-out" id="clockOutBtn" disabled>
+                            <svg width="24"
+                                 height="24"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="2" />
+                                <path d="M16 12l-4-4-4 4"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round" />
+                            </svg>
+                            Clock Out
+                        </button>
+            <button class="clock-btn" id="dayOffBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                              <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Day Off
+                        </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Employee QR Code Actions (shown only for employees) -->
+    <div class="employee-qr-actions" id="employeeQrActions" style="display: none;">
+      <div class="qr-actions-divider">
+        <span>OR</span>
+      </div>
+      <div class="qr-buttons-row">
+        <button class="clock-btn clock-qr" id="generateClockInQrBtn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <rect x="16" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <rect x="3" y="16" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Generate QR for Clock In
+                </button>
+        <button class="clock-btn clock-qr" id="generateClockOutQrBtn" disabled>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <rect x="16" y="3" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <rect x="3" y="16" width="5" height="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 12l-4-4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Generate QR for Clock Out
+                </button>
+      </div>
+    </div>
+
+    <!-- Today's Activity -->
+    <section class="activity-section">
+      <div class="section-header">
+        <h2>Today's Activity</h2>
+        <div class="activity-filters">
+          <select id="statusFilterActivity" class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="present">Present</option>
+                        <option value="absent">Absent</option>
+                        <option value="late">Late</option>
+                    </select>
+          <button class="btn btn-secondary" id="exportActivityBtn">
+                        <svg width="16"
+                             height="16"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                            <polyline points="7,10 12,15 17,10"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round" />
+                            <line x1="12"
+                                  y1="15"
+                                  x2="12"
+                                  y2="3"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                        Export
+                    </button>
+        </div>
+      </div>
+
+      <div class="activity-grid">
+        <div class="activity-card">
+          <div class="activity-card-header">
+            <h3>Active Sessions</h3>
+            <span class="activity-count" id="activeSessionsCount">0</span>
+          </div>
+          <div class="activity-list" id="activeSessions">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-card-header">
+            <h3>Recent Activity</h3>
+            <span class="activity-time">
+                            Last updated: <span id="lastUpdatedActivity"></span>
+            </span>
+          </div>
+          <div class="activity-list" id="recentActivity">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attendance Overview -->
+    <section class="attendance-overview">
+      <div class="section-header">
+        <h2>Attendance Overview</h2>
+        <a href="attendance.html" class="view-all-link">View Full Report</a>
+      </div>
+
+      <div class="overview-stats">
+        <div class="stat-item">
+          <div class="stat-icon stat-icon-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <polyline points="22,4 12,14.01 9,11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value" id="presentCount">0</div>
+            <div class="stat-label">Present Today</div>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon stat-icon-yellow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value" id="lateCount">0</div>
+            <div class="stat-label">Late Arrivals</div>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon stat-icon-red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2" />
+              <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value" id="absentCount">0</div>
+            <div class="stat-label">Absent</div>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon stat-icon-blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value" id="avgHours">0</div>
+            <div class="stat-label">Avg Hours</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Include Settings Panel -->
+  <div id="settingsContainer"></div>
+
+
+  <!-- Time Tracking Settings Modal -->
+  <div class="modal" id="timeSettingsModal" style="display: none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Manage Time Tracking</h2>
+        <button class="modal-close" id="closeTimeSettingsBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+      </div>
+      <div class="modal-body">
+        <form id="timeSettingsForm" class="form-grid">
+          <div class="form-group">
+            <label for="startTimeInput">Standard Start Time</label>
+            <input type="time" id="startTimeInput" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lateMinutesInput">Late window (minutes after start)</label>
+              <input type="number" id="lateMinutesInput" min="0" max="180" required />
+            </div>
+            <div class="form-group">
+              <label for="absentMinutesInput">Absent from (minutes after start)</label>
+              <input type="number" id="absentMinutesInput" min="0" max="480" required />
+            </div>
+          </div>
+          <p class="help-text">Example: start 08:00, late until 08:29, absent from 08:30.</p>
+        </form>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelTimeSettingsBtn">Cancel</button>
+        <button type="submit" form="timeSettingsForm" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code Scanner Modal -->
+  <div class="modal" id="qrScanModal" style="display: none">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h2>QR Code Scanner</h2>
+        <button class="modal-close" id="closeQrModalBtn">
+                    <svg width="24"
+                         height="24"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <line x1="18"
+                              y1="6"
+                              x2="6"
+                              y2="18"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                        <line x1="6"
+                              y1="6"
+                              x2="18"
+                              y2="18"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </button>
+      </div>
+
+      <div class="modal-body">
+        <div
+          style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #bae6fd;">
+          <h4 style="margin: 0 0 8px 0; color: #1e40af; font-size: 16px;">📱 Employee QR Code Scanner</h4>
+          <p style="margin: 0; color: #1e40af; font-size: 14px;">
+            Scan an employee QR code to automatically clock them in or out
+          </p>
+        </div>
+
+        <div id="qr-reader" style="width: 100%; border-radius: 8px; overflow: hidden;"></div>
+
+        <div
+          style="background: #fefce8; padding: 12px; border-radius: 8px; margin-top: 15px; border: 1px solid #fef08a;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span style="font-size: 16px;">⚡</span>
+            <strong style="color: #a16207; font-size: 14px;">Automatic Action</strong>
+          </div>
+          <p style="margin: 0; color: #a16207; font-size: 13px;">
+            • If employee is <strong>not clocked in</strong> → automatically <strong>clock in</strong><br>
+            • If employee is <strong>already clocked in</strong> ��� automatically <strong>clock out</strong>
+          </p>
+        </div>
+
+        <div
+          style="margin-top: 15px; padding: 10px; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb;">
+          <p style="margin: 0; color: #6b7280; font-size: 12px; text-align: center;">
+            💡 Point camera at employee QR code or ask employee to show their QR code
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelQrBtn">
+                    Cancel
+                </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee QR Code Modal -->
+  <div class="modal" id="employeeQrModal" style="display: none">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+      <div class="modal-header">
+        <h2>My QR Code</h2>
+        <button class="modal-close" id="closeEmployeeQrModalBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+      </div>
+
+      <div class="modal-body" style="padding: 20px;">
+        <div style="margin-bottom: 15px;">
+          <h3 style="margin: 0; color: #2563eb;" id="employeeQrName">Loading...</h3>
+          <p style="margin: 5px 0; color: #6b7280; font-size: 14px;" id="employeeQrInfo">Generating QR code...</p>
+        </div>
+
+        <div id="employeeQrContainer"
+          style="margin: 20px 0; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center;">
+            <div
+              style="width: 40px; height: 40px; border: 4px solid #f3f4f6; border-top: 4px solid #2563eb; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px;">
+            </div>
+            <p style="color: #6b7280; font-size: 14px;">Generating QR code...</p>
+          </div>
+        </div>
+
+        <p style="color: #6b7280; font-size: 12px; margin: 10px 0;">
+          Show this QR code to admin/front desk to clock in or out
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="closeEmployeeQrBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #9ca3af !important;
+    }
+
+    .btn-secondary[disabled] {
+      background-color: #d1d5db !important;
+      color: #6b7280 !important;
+    }
+
+    .employee-show-qr {
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .employee-show-qr:hover {
+      color: var(--primary-blue);
+      background-color: var(--surface-secondary);
+    }
+
+    .employee-show-qr svg {
+      transition: transform 0.2s ease;
+    }
+
+    .employee-show-qr:hover svg {
+      transform: scale(1.1);
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/fallback.js"></script>
+  <!-- Temporarily disabled for debugging
+    <script src="js/database.js"></script>
+    <script src="js/api.js"></script>
+    -->
+  <script src="js/translations.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/attendance-settings.js"></script>
+  <script src="js/timetracking.js"></script>
+  <script>
+    // Load settings panel
+        fetch('components/settings-panel.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('settingsContainer').innerHTML = html;
+                // Initialize settings after loading
+                if (typeof initializeSettings === 'function') {
+                    initializeSettings();
+                }
+            });
+
+  </script>
+</body>
+
+</html>

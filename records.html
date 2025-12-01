@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Records & Analytics - Ink and Arch</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/records.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+</head>
+
+<body>
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 12h18M3 6h18M3 18h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        </svg>
+        <span class="logo-text">
+                    <img src="whiteink.png" alt="error" width="200" height="100" />
+                </span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Dashboard
+      </a>
+
+      <a href="patients.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Patients
+      </a>
+
+      <a href="inventory.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="3.27,6.96 12,12.01 20.73,6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Inventory
+      </a>
+
+      <a href="employees.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Employees
+      </a>
+
+      <a href="timetracking.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Time Tracking
+      </a>
+
+      <a href="records.html" class="sidebar-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Records
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-details">
+          <span class="user-name" id="userName">Admin</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+                <svg width="16"
+                     height="16"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                    <polyline points="16,17 21,12 16,7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    <line x1="21"
+                          y1="12"
+                          x2="9"
+                          y2="12"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                </svg>
+            </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="records-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="page-title">Records & Analytics</h1>
+          <p class="page-subtitle">Track performance, analyze trends, and monitor system activity</p>
+        </div>
+        <div class="header-right">
+          <div class="date-range-selector">
+            <select id="dateRangeSelect" class="date-range-select">
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+                <option value="quarter">This Quarter</option>
+                <option value="year">This Year</option>
+                <option value="custom">Custom Range</option>
+              </select>
+          </div>
+          <button class="btn btn-secondary" id="exportReportBtn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <polyline
+                  points="7,10 12,15 17,10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="12"
+                  y1="15"
+                  x2="12"
+                  y2="3"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Export Report
+            </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Analytics Cards -->
+    <section class="analytics-section">
+      <div class="analytics-grid">
+        <!-- Patient Analytics -->
+        <div class="analytics-card">
+          <div class="card-header">
+            <h3>Patient Analytics</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="metric">
+              <div class="metric-value" id="totalPatients">0</div>
+              <div class="metric-label">Total Patients Served</div>
+            </div>
+            <div class="metrics-row">
+              <div class="metric-small">
+                <div class="metric-value" id="dailyPatients">0</div>
+                <div class="metric-label">Today</div>
+              </div>
+              <div class="metric-small">
+                <div class="metric-value" id="weeklyPatients">0</div>
+                <div class="metric-label">This Week</div>
+              </div>
+              <div class="metric-small">
+                <div class="metric-value" id="monthlyPatients">0</div>
+                <div class="metric-label">This Month</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Analytics -->
+        <div class="analytics-card revenue-analytics-table">
+          <div class="card-header">
+            <h3>Revenue Analytics</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="card-content">
+            <table class="revenue-table">
+              <tbody>
+                <tr>
+                  <td class="revenue-label">Total Revenue</td>
+                  <td class="revenue-value" id="totalRevenue">$0.00</td>
+                </tr>
+                <tr>
+                  <td class="revenue-label">Today</td>
+                  <td class="revenue-value" id="dailyRevenue">$0.00</td>
+                </tr>
+                <tr>
+                  <td class="revenue-label">This Week</td>
+                  <td class="revenue-value" id="weeklyRevenue">$0.00</td>
+                </tr>
+                <tr>
+                  <td class="revenue-label">This Month</td>
+                  <td class="revenue-value" id="monthlyRevenue">$0.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Payment Summary -->
+        <div class="analytics-card payment-summary-card">
+          <div class="card-header">
+            <h3>Payment Summary</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <circle cx="8" cy="15" r="1" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="payment-summary-grid">
+              <div class="payment-summary-item">
+                <span class="payment-summary-label">Cash Payments</span>
+                <span class="payment-summary-value" id="paymentSummaryCash">$0.00</span>
+              </div>
+              <div class="payment-summary-item">
+                <span class="payment-summary-label">Bank Transfers</span>
+                <span class="payment-summary-value" id="paymentSummaryBank">$0.00</span>
+              </div>
+              <div class="payment-summary-item">
+                <span class="payment-summary-label">Credit Cards</span>
+                <span class="payment-summary-value" id="paymentSummaryCredit">$0.00</span>
+              </div>
+              <div class="payment-summary-item">
+                <span class="payment-summary-label">E-Wallets</span>
+                <span class="payment-summary-value" id="paymentSummaryEwallet">$0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Treatment Analytics -->
+        <div class="analytics-card">
+          <div class="card-header">
+            <h3>Popular Treatments</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="treatment-list" id="popularTreatments">
+              <!-- Will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventory Status -->
+        <div class="analytics-card">
+          <div class="card-header">
+            <h3>Inventory Status</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="metrics-row">
+              <div class="metric-small">
+                <div class="metric-value" id="totalItems">0</div>
+                <div class="metric-label">Total Items</div>
+              </div>
+              <div class="metric-small">
+                <div class="metric-value alert" id="lowStockItems">0</div>
+                <div class="metric-label">Low Stock</div>
+              </div>
+              <div class="metric-small">
+                <div class="metric-value danger" id="outOfStockItems">0</div>
+                <div class="metric-label">Out of Stock</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales & Inventory Summary Section -->
+    <section class="sales-summary-section">
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="card-header">
+            <h3>Total Sales</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-value" id="recordsTotalSalesValue">₱0</div>
+          <div class="card-footer">From all appointments</div>
+        </div>
+
+        <div class="summary-card paid">
+          <div class="card-header">
+            <h3>Paid Amount</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4l-8.5 8.5-2.5-2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-value" id="recordsPaidAmountValue">₱0</div>
+          <div class="card-footer">Fully paid appointments</div>
+        </div>
+
+        <div class="summary-card unpaid">
+          <div class="card-header">
+            <h3>Unpaid/Partial</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-value" id="recordsUnpaidAmountValue">₱0</div>
+          <div class="card-footer">Awaiting payment</div>
+        </div>
+
+        <div class="summary-card inventory">
+          <div class="card-header">
+            <h3>Inventory Value</h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="3.27,6.96 12,12.01 20.73,6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-value" id="recordsInventoryValueValue">₱0</div>
+          <div class="card-footer">Current inventory stock value</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <section class="tabs-section">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="daily">Daily Records</button>
+        <button class="tab-btn" data-tab="weekly">Weekly Summary</button>
+        <button class="tab-btn" data-tab="monthly">Monthly Report</button>
+        <button class="tab-btn" data-tab="inventory-logs">Inventory Logs</button>
+      </div>
+
+      <!-- Daily Records Tab -->
+      <div class="tab-content active" id="daily-tab">
+        <div class="daily-layout">
+          <aside class="daily-calendar-panel" aria-label="Calendar navigation">
+            <div class="daily-calendar-card">
+              <div class="daily-calendar-header">
+                <button class="calendar-nav-button" id="dailyCalendarPrev" type="button" aria-label="Previous month">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                <div class="daily-calendar-month" id="dailyCalendarMonth" aria-live="polite">October 2025</div>
+                <button class="calendar-nav-button" id="dailyCalendarNext" type="button" aria-label="Next month">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+              </div>
+              <div class="daily-calendar-weekdays" role="row">
+                <span class="calendar-weekday" role="columnheader">Sun</span>
+                <span class="calendar-weekday" role="columnheader">Mon</span>
+                <span class="calendar-weekday" role="columnheader">Tue</span>
+                <span class="calendar-weekday" role="columnheader">Wed</span>
+                <span class="calendar-weekday" role="columnheader">Thu</span>
+                <span class="calendar-weekday" role="columnheader">Fri</span>
+                <span class="calendar-weekday" role="columnheader">Sat</span>
+              </div>
+              <div class="daily-calendar-grid" id="dailyCalendarGrid" role="grid" aria-labelledby="dailyCalendarMonth">
+                <!-- Calendar days rendered via JavaScript -->
+              </div>
+              <div class="daily-calendar-legend" aria-hidden="true">
+                <span class="calendar-legend-item"><span class="calendar-legend-dot calendar-legend-selected"></span>Selected
+                day</span>
+                <span class="calendar-legend-item"><span class="calendar-legend-dot calendar-legend-active"></span>With
+                records</span>
+              </div>
+            </div>
+          </aside>
+          <div class="records-container">
+            <div class="records-header">
+              <h3>Daily Records</h3>
+              <span class="records-date" id="dailyRecordsDate">Today</span>
+            </div>
+            <div class="records-list" id="dailyRecordsList">
+              <!-- Will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly Records Tab -->
+      <div class="tab-content" id="weekly-tab">
+        <div class="weekly-summary">
+          <div class="summary-grid">
+            <div class="summary-card">
+              <h4>This Week Summary</h4>
+              <div class="summary-stats">
+                <div class="stat">
+                  <span class="stat-label">Patients Served:</span>
+                  <span class="stat-value" id="weekSummaryPatients">0</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Total Revenue:</span>
+                  <span class="stat-value" id="weekSummaryRevenue">$0.00</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Average per Patient:</span>
+                  <span class="stat-value" id="weekSummaryAverage">$0.00</span>
+                </div>
+              </div>
+            </div>
+            <div class="summary-card">
+              <h4>Most Popular Treatments</h4>
+              <div class="treatment-ranking" id="weeklyTreatmentRanking">
+                <!-- Will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Records Tab -->
+      <div class="tab-content" id="monthly-tab">
+        <div class="monthly-report">
+          <div class="report-grid">
+            <div class="report-card">
+              <h4>Monthly Performance</h4>
+              <div class="performance-metrics">
+                <div class="metric-row">
+                  <span class="metric-label">Total Appointments:</span>
+                  <span class="metric-value" id="monthlyAppointments">0</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">Total Revenue:</span>
+                  <span class="metric-value" id="monthlyTotalRevenue">$0.00</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">Average Daily Revenue:</span>
+                  <span class="metric-value" id="monthlyAvgDaily">$0.00</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">New Patients:</span>
+                  <span class="metric-value" id="monthlyNewPatients">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="report-card">
+              <h4>Treatment Breakdown</h4>
+              <div class="treatment-breakdown" id="monthlyTreatmentBreakdown">
+                <!-- Will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Logs Tab -->
+      <div class="tab-content" id="inventory-logs-tab">
+        <div class="logs-container">
+          <div class="logs-header">
+            <h3>Inventory Change Logs</h3>
+            <div class="logs-filters">
+              <select id="logTypeFilter" class="filter-select">
+                  <option value="all">All Changes</option>
+                  <option value="treatment_usage">Treatment Usage</option>
+                  <option value="add">Stock Added</option>
+                  <option value="remove">Stock Removed</option>
+                  <option value="set">Stock Set</option>
+                </select>
+            </div>
+          </div>
+          <div class="logs-list" id="inventoryLogsList">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Custom Date Range Modal -->
+  <div class="modal" id="customDateModal" style="display: none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Custom Date Range</h2>
+        <button class="modal-close" id="closeCustomDateModalBtn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+      </div>
+
+      <form class="date-range-form" id="dateRangeForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input
+                type="date"
+                id="startDate"
+                name="startDate"
+                class="form-input"
+                required
+              />
+          </div>
+          <div class="form-group">
+            <label for="endDate" class="form-label">End Date</label>
+            <input
+                type="date"
+                id="endDate"
+                name="endDate"
+                class="form-input"
+                required
+              />
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelDateRangeBtn">
+              Cancel
+            </button>
+          <button type="submit" class="btn btn-primary" id="applyDateRangeBtn">
+              Apply Range
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Include Settings Panel -->
+  <div id="settingsContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/fallback.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/cache-sync.js"></script>
+  <script src="js/records.js"></script>
+  <script>
+    // Load settings panel
+      fetch('components/settings-panel.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('settingsContainer').innerHTML = html;
+          // Initialize settings after loading
+          if (typeof initializeSettings === 'function') {
+            initializeSettings();
+          }
+        });
+  </script>
+</body>
+
+</html>

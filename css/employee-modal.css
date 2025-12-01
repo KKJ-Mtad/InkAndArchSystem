@@ -1,0 +1,439 @@
+/* Employee Time Tracking Modal Styles */
+
+/* Attendance Status Display */
+.attendance-status-display {
+  margin: 16px 0;
+  padding: 0;
+}
+
+.attendance-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.attendance-warning.absent {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #f87171;
+}
+
+.attendance-success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #4ade80;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.employee-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(243, 244, 246, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-4);
+}
+
+.employee-modal-content {
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  max-width: 448px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* Modal Header */
+.employee-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--spacing-8) var(--spacing-8) var(--spacing-4);
+}
+
+.employee-modal-header svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.employee-modal-title {
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  line-height: 32px;
+}
+
+/* Modal Timestamp */
+.employee-modal-timestamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-8);
+  margin-bottom: var(--spacing-4);
+}
+
+.timestamp-text {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+  text-align: center;
+  line-height: 24px;
+}
+
+/* Employee Info */
+.employee-modal-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+.employee-info-text {
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  line-height: 32px;
+}
+
+/* Modal Body */
+.employee-modal-body {
+  padding: 0 var(--spacing-8) var(--spacing-8);
+}
+
+/* Time Tracking Buttons */
+.time-tracking-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: var(--spacing-6);
+}
+
+.time-button {
+  display: flex;
+  width: 183px;
+  height: 44px;
+  padding: 11.5px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 2px dashed #000;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-button:hover {
+  background-color: var(--gray-50);
+}
+
+.time-button svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Current Session Display */
+.current-session-display {
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 6px;
+  margin-bottom: var(--spacing-6);
+}
+
+.session-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-3);
+}
+
+.session-row:last-child {
+  margin-bottom: 0;
+}
+
+.session-label {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  line-height: 20px;
+  margin-right: var(--spacing-2);
+}
+
+.session-time {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  line-height: 20px;
+}
+
+/* Form Styles */
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field-label {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 20px;
+}
+
+.form-field-select {
+  display: flex;
+  width: 100%;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: var(--white);
+  position: relative;
+}
+
+.form-select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 var(--spacing-3);
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  line-height: 20px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  outline: none;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* Time Buttons in Form */
+.form-time-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Textarea */
+.form-field-textarea {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  padding: 14px;
+  align-items: flex-start;
+  border-radius: 6px;
+  border: 2px solid #e5e7eb;
+  background: var(--white);
+}
+
+.form-textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  line-height: 24px;
+  resize: none;
+}
+
+.form-textarea:focus {
+  outline: none;
+}
+
+.form-textarea::placeholder {
+  color: #ccc;
+}
+
+/* Submit Button */
+.submit-button {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 9.5px 0;
+  justify-content: center;
+  align-items: center;
+  background: #1f2937;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #374151;
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Modal Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: var(--spacing-2);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .employee-modal {
+    padding: var(--spacing-2);
+  }
+
+  .employee-modal-content {
+    max-width: 100%;
+  }
+
+  .time-tracking-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-3);
+  }
+
+  .time-button {
+    width: 100%;
+  }
+
+  .form-time-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .employee-modal-header {
+    padding: var(--spacing-6) var(--spacing-6) var(--spacing-3);
+  }
+
+  .employee-modal-body {
+    padding: 0 var(--spacing-6) var(--spacing-6);
+  }
+
+  .employee-modal-timestamp,
+  .employee-modal-info {
+    padding: 0 var(--spacing-6);
+  }
+}
+
+/* Animation */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.employee-modal-content {
+  animation: modalFadeIn 0.3s ease;
+}
+
+/* Focus visible for accessibility */
+.time-button:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible,
+.submit-button:focus-visible,
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .time-button {
+    border-width: 3px;
+  }
+
+  .form-field-select,
+  .form-field-textarea {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .employee-modal-content {
+    animation: none;
+  }
+
+  .time-button,
+  .submit-button,
+  .modal-close-btn {
+    transition: none;
+  }
+}

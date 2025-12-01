@@ -1,0 +1,1625 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patients - Ink and Arch</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/patients.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+</head>
+
+<body>
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 12h18M3 6h18M3 18h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        </svg>
+        <span class="logo-text">
+                    <img src="whiteink.png" alt="error" width="200" height="100" />
+                </span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Dashboard
+      </a>
+
+      <a href="patients.html" class="sidebar-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Patients
+      </a>
+
+      <a href="inventory.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="3.27,6.96 12,12.01 20.73,6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Inventory
+      </a>
+
+      <a href="employees.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Employees
+      </a>
+
+      <a href="timetracking.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Time Tracking
+      </a>
+
+      <a href="records.html" class="sidebar-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Records
+      </a>
+
+      <a href="logs.html" class="sidebar-item" id="logsNavItem" style="display: none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" />
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Audit Logs
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-details no-avatar">
+          <span class="user-name" id="userName">Admin</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+                <svg width="16"
+                     height="16"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                    <polyline points="16,17 21,12 16,7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    <line x1="21"
+                          y1="12"
+                          x2="9"
+                          y2="12"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                </svg>
+            </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="patients-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="page-title">Patient Records</h1>
+          <p class="page-subtitle">Manage patient information and treatment history</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-primary" id="addPatientBtn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="12"
+                  y1="5"
+                  x2="12"
+                  y2="19"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="5"
+                  y1="12"
+                  x2="19"
+                  y2="12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Add Patient
+            </button>
+          <button class="btn btn-secondary" id="manageTreatmentsBtn">Manage Treatments</button>
+          <button class="btn btn-secondary" id="manageConsentsBtn">Manage Consents</button>
+          <button class="btn btn-secondary" id="manageArchivesBtn">Manage Archives</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Appointment Notifications Section -->
+    <section class="appointment-notifications-section" id="appointmentNotificationsSection" style="display: none;">
+      <div class="notifications-content">
+        <div class="notifications-header">
+          <div class="notifications-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Upcoming Appointments</span>
+            <span class="notifications-count" id="appointmentNotificationsCount">(0)</span>
+          </div>
+          <button class="notifications-toggle" id="appointmentNotificationsToggle" aria-label="Toggle notifications">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications-list" id="appointmentNotificationsList">
+          <!-- Notifications will be populated here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="filters-section">
+      <div class="filters-content">
+        <div class="search-container">
+          <div class="search-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <input
+                type="text"
+                placeholder="Search patients..."
+                id="searchInput"
+                class="search-input"
+              />
+          </div>
+        </div>
+
+        <div class="filters-container">
+          <select id="statusFilter" class="filter-select">
+              <option value="all">All Patients</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+
+          <button class="btn btn-secondary" id="exportBtn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <polyline
+                  points="7,10 12,15 17,10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="12"
+                  y1="15"
+                  x2="12"
+                  y2="3"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Export
+            </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patients Table -->
+    <section class="patients-table-section">
+      <div class="table-container">
+        <div class="table-header">
+          <h3>Patient Records</h3>
+          <span class="table-count" id="patientCount">0 patients</span>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="patients-table" id="patientsTable">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Mobile Number</th>
+                <th>Last Appointment</th>
+                <th>Total Spent</th>
+                <th>Last Treatment</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patientsTableBody">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" id="paginationContainer">
+          <div class="pagination-info">
+            <span id="paginationInfo">Showing 1-5 of 24 patients</span>
+          </div>
+          <div class="pagination-controls">
+            <button class="pagination-btn" id="prevBtn" disabled>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="15,18 9,12 15,6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Previous
+              </button>
+            <span class="pagination-pages" id="paginationPages">
+                <!-- Page numbers will be added here -->
+              </span>
+            <button class="pagination-btn" id="nextBtn">
+                Next
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="9,18 15,12 9,6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add Patient Modal -->
+  <div class="modal" id="addPatientModal" style="display: none">
+    <div class="modal-content">
+      <!-- Step Indicators -->
+      <div class="modal-steps-container">
+        <div class="modal-steps">
+          <div class="step-indicator active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Guest Info</span>
+          </div>
+          <div class="step-indicator" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Personal</span>
+          </div>
+          <div class="step-indicator" data-step="3">
+            <span class="step-number">3</span>
+            <span class="step-label">Medical</span>
+          </div>
+          <div class="step-indicator" data-step="4">
+            <span class="step-number">4</span>
+            <span class="step-label">Skincare</span>
+          </div>
+          <div class="step-indicator" data-step="5">
+            <span class="step-number">5</span>
+            <span class="step-label">Consent</span>
+          </div>
+          <div class="step-indicator" data-step="6">
+            <span class="step-number">6</span>
+            <span class="step-label">Treatment</span>
+          </div>
+        </div>
+        <div class="step-progress-bar">
+          <div class="step-progress-fill" style="width: 16.67%;"></div>
+        </div>
+      </div>
+
+      <div class="modal-header">
+        <h2>Add New Patient</h2>
+        <button class="modal-close" id="closeModalBtn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+      </div>
+
+      <form class="patient-form" id="patientForm">
+        <!-- Guest Information Sheet Header -->
+        <div class="form-section-header">
+          <h3>Guest Information Sheet</h3>
+          <p>Please provide the following information to help us serve you better.</p>
+        </div>
+
+        <!-- Guest Information Section -->
+        <div class="form-section">
+          <h4 class="section-title">Guest Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="title" class="form-label">Title *</label>
+              <select id="title" name="title" class="form-select" required>
+                <option value="">Select title</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" class="form-input" maxlength="25" required />
+            </div>
+            <div class="form-group">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" id="firstName" name="firstName" class="form-input" maxlength="25" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="middleName" class="form-label">Middle Name</label>
+              <input type="text" id="middleName" name="middleName" class="form-input" maxlength="25" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Details Section -->
+        <div class="form-section">
+          <h4 class="section-title">Personal Details</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dateOfBirth" class="form-label">Date of Birth *</label>
+              <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label for="age" class="form-label">Age *</label>
+              <input type="number" id="age" name="age" class="form-input" min="1" max="999" required />
+            </div>
+            <div class="form-group">
+              <label for="gender" class="form-label">Gender *</label>
+              <select id="gender" name="gender" class="form-select" required>
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+            </div>
+          </div>
+          <div class="form-row" id="otherGenderRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="otherGender" class="form-label">Please specify</label>
+              <input type="text" id="otherGender" name="otherGender" class="form-input" placeholder="Please specify your gender" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="address" class="form-label">Address *</label>
+              <textarea id="address" name="address" class="form-textarea" rows="2" required placeholder="Street, Barangay"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city" class="form-label">City *</label>
+              <input type="text" id="city" name="city" class="form-input" maxlength="25" pattern="^[A-Za-z ]{1,25}$" required />
+            </div>
+            <div class="form-group">
+              <label for="state" class="form-label">State/Province *</label>
+              <input type="text" id="state" name="state" class="form-input" maxlength="25" pattern="^[A-Za-z ]{1,25}$" required />
+            </div>
+            <div class="form-group">
+              <label for="zipCode" class="form-label">ZIP Code *</label>
+              <input type="text" id="zipCode" name="zipCode" class="form-input" inputmode="numeric" maxlength="4" pattern="^\d{4}$" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Phone Numbers *</label>
+              <div id="phoneNumbersContainer" class="phone-numbers-container">
+                <div class="phone-number-input-group">
+                  <input type="tel" class="form-input phone-input phone-number-field" maxlength="11" pattern="^\d{11}$" placeholder="Enter phone number" required />
+                  <button type="button" class="btn btn-secondary remove-phone-btn" style="display: none;">Remove</button>
+                </div>
+              </div>
+              <button type="button" id="addPhoneBtn" class="btn btn-secondary add-phone-btn">+ Add Phone Number</button>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" class="form-input" maxlength="26" />
+            </div>
+            <div class="form-group">
+              <label for="occupation" class="form-label">Occupation (Optional)</label>
+              <input type="text" id="occupation" name="occupation" class="form-input" maxlength="24" pattern="^[A-Za-z\s\-]{0,24}$" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Contact Section -->
+        <div class="form-section">
+          <h4 class="section-title">Emergency Contact</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="emergencyContactName" class="form-label">Full Name *</label>
+              <input type="text" id="emergencyContactName" name="emergencyContactName" class="form-input" pattern="^[A-Za-z ]{1,30}$" maxlength="30" required />
+            </div>
+            <div class="form-group">
+              <label for="emergencyRelationship" class="form-label">Relationship *</label>
+              <input type="text" id="emergencyRelationship" name="emergencyRelationship" class="form-input" maxlength="15" pattern="^[A-Za-z ]{1,15}$" required placeholder="e.g., Spouse, Parent, Sibling" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Phone Numbers (Optional)</label>
+              <div id="emergencyPhoneNumbersContainer" class="phone-numbers-container">
+                <div class="phone-number-input-group">
+                  <input type="tel" class="form-input phone-input emergency-phone-field" maxlength="11" pattern="^\d{11}$" placeholder="Enter phone number" />
+                  <button type="button" class="btn btn-secondary remove-phone-btn" style="display: none;">Remove</button>
+                </div>
+              </div>
+              <button type="button" id="addEmergencyPhoneBtn" class="btn btn-secondary add-phone-btn">+ Add Phone Number</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medical History Section -->
+        <div class="form-section">
+          <h4 class="section-title">Medical History
+            <span class="optional-note">(All fields in this section are optional)</span></h4>
+
+          <!-- Allergies -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Do you have allergies?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="hasAllergies" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="hasAllergies" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="allergiesSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="allergiesSpecify" class="form-label">Please specify your allergies</label>
+              <textarea id="allergiesSpecify" name="allergiesSpecify" class="form-textarea" rows="2" placeholder="List any known allergies (food, medication, environmental, etc.)"></textarea>
+            </div>
+          </div>
+
+          <!-- Medication -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Are you currently taking any medication?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="takingMedication" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="takingMedication" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="medicationSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="medicationSpecify" class="form-label">Please specify your current medications</label>
+              <textarea id="medicationSpecify" name="medicationSpecify" class="form-textarea" rows="2" placeholder="List all current medications, including dosage if known"></textarea>
+            </div>
+          </div>
+
+          <!-- Skin Conditions -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Do you have any pre-existing skin conditions (e.g. eczema, psoriasis)?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="hasSkinConditions" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="hasSkinConditions" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="skinConditionsSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="skinConditionsSpecify" class="form-label">Please specify your skin conditions</label>
+              <textarea id="skinConditionsSpecify" name="skinConditionsSpecify" class="form-textarea" rows="2" placeholder="Describe any skin conditions you have"></textarea>
+            </div>
+          </div>
+
+          <!-- Surgeries -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Have you undergone any surgeries or cosmetic procedures?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="hadSurgeries" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="hadSurgeries" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="surgeriesSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="surgeriesSpecify" class="form-label">Please specify surgeries or procedures</label>
+              <textarea id="surgeriesSpecify" name="surgeriesSpecify" class="form-textarea" rows="2" placeholder="List any surgeries or cosmetic procedures with approximate dates"></textarea>
+            </div>
+          </div>
+
+          <!-- Pregnancy -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Are you pregnant?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="isPregnant" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="isPregnant" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Smoking -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Do you smoke?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="smokes" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="smokes" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skin Care Routine Section -->
+        <div class="form-section">
+          <h4 class="section-title">Skin Care Routine</h4>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="currentSkincare" class="form-label">What is your current skincare routine (e.g. products used)?</label>
+              <textarea id="currentSkincare" name="currentSkincare" class="form-textarea" rows="3" placeholder="Describe your daily skincare routine and products you currently use"></textarea>
+            </div>
+          </div>
+
+
+          <!-- New Products -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Have you used any new skincare products in the last 6 months?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="usedNewProducts" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="usedNewProducts" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row" id="newProductsSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="newProductsSpecify" class="form-label">Please specify the new products</label>
+              <textarea id="newProductsSpecify" name="newProductsSpecify" class="form-textarea" rows="2" placeholder="List any new skincare products you've tried in the last 6 months"></textarea>
+            </div>
+          </div>
+
+          <!-- Adverse Reactions -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Have you had any adverse reactions to skincare products?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="hadAdverseReactions" value="no" checked />
+                    <span>No</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="hadAdverseReactions" value="yes" />
+                    <span>Yes</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="adverseReactionsSpecifyRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="adverseReactionsSpecify" class="form-label">Please specify the adverse reactions</label>
+              <textarea id="adverseReactionsSpecify" name="adverseReactionsSpecify" class="form-textarea" rows="2" placeholder="Describe any reactions you've had to skincare products"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consent Forms -->
+        <div class="form-section">
+          <h4 class="section-title">Consent Forms</h4>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <div id="patientConsentCheckboxes" class="consent-checkboxes"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Treatment and Payment Information Section -->
+        <div class="form-section">
+          <h4 class="section-title">Treatment & Payment Information</h4>
+
+          <!-- Initial Treatment -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="patientInitialTreatment" class="form-label">Initial Treatment (Optional)</label>
+              <select id="patientInitialTreatment" name="initialTreatment" class="form-select">
+                          <option value="">Select initial treatment</option>
+                      </select>
+            </div>
+          </div>
+
+          <div class="form-row" id="initialTrackCardRow" style="display: none;">
+            <label class="checkbox-container initial-treatment-card-checkbox">
+                      <input type="checkbox" id="trackInitialTreatmentCard" name="trackInitialTreatmentCard">
+                      <span class="checkbox-label">Create Treatment Card</span>
+                  </label>
+          </div>
+          <div class="form-row" id="initialTrackCardDaysRow" style="display: none;">
+            <div class="form-group">
+              <label for="initialTreatmentCardDays" class="form-label">Number of Days/Slots</label>
+              <input type="number" id="initialTreatmentCardDays" name="initialTreatmentCardDays" class="form-input no-spinner" min="1" max="8" value="7" />
+            </div>
+          </div>
+
+          <!-- Treatment Details -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="staffEmployee" class="form-label">Staff/Employee Who Serviced *</label>
+              <select id="staffEmployee" name="staffEmployee" class="form-select" required>
+                          <option value="">Select staff member</option>
+                          <!-- Will be populated by JavaScript -->
+                      </select>
+            </div>
+            <div class="form-group">
+              <label for="treatmentDate" class="form-label">Treatment Date *</label>
+              <input type="date" id="treatmentDate" name="treatmentDate" class="form-input" required />
+            </div>
+          </div>
+
+          <!-- Payment Information -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="totalSales" class="form-label">Price (₱) *</label>
+              <input type="number" id="totalSales" name="totalSales" class="form-input" min="0" step="0.01" placeholder="0.00" readonly />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payment Status *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                              <input type="radio" name="paymentStatus" value="partial" />
+                              <span>Partial Amount</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="paymentStatus" value="full" checked />
+                              <span>Paid in Full</span>
+                          </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="paymentDiscountType" class="form-label">Discount Type</label>
+              <select id="paymentDiscountType" name="paymentDiscountType" class="form-select">
+                          <option value="amount">Amount (₱)</option>
+                          <option value="percent">Percent (%)</option>
+                      </select>
+            </div>
+            <div class="form-group">
+              <label for="paymentDiscount" class="form-label">Discount</label>
+              <input type="number" id="paymentDiscount" name="paymentDiscount" class="form-input no-spinner" min="0" step="0.01" placeholder="0.00" />
+            </div>
+            <div class="form-group">
+              <label for="paymentTotalAfterDiscount" class="form-label">Total After Discount (₱)</label>
+              <input type="number" id="paymentTotalAfterDiscount" name="paymentTotalAfterDiscount" class="form-input no-spinner" min="0" step="0.01" placeholder="0.00" readonly />
+            </div>
+          </div>
+
+          <!-- Payment Method and Amounts -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="downPayment" class="form-label">Down Payment Amount</label>
+              <input type="number" id="downPayment" name="downPayment" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+            <div class="form-group">
+              <label for="cashPayment" class="form-label">Cash Payment</label>
+              <input type="number" id="cashPayment" name="cashPayment" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bankTransferEWalletCredit" class="form-label">BankTransfer/EWallet/CreditCard</label>
+              <input type="number" id="bankTransferEWalletCredit" name="bankTransferEWalletCredit" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="form-label">Primary Payment Method *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                              <input type="radio" name="paymentMethod" value="cash" checked />
+                              <span>Cash</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="paymentMethod" value="bank_transfer" />
+                              <span>Bank Transfer</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="paymentMethod" value="e_wallet" />
+                              <span>E-Wallet</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="paymentMethod" value="credit_card" />
+                              <span>Credit Card</span>
+                          </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- E-Wallet Type Selection -->
+          <div class="form-row" id="eWalletTypeRow" style="display: none;">
+            <div class="form-group full-width">
+              <label class="form-label">Select E-Wallet Type *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                              <input type="radio" name="eWalletType" value="gcash" />
+                              <span>GCash</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="eWalletType" value="paymaya" />
+                              <span>PayMaya</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="eWalletType" value="grabpay" />
+                              <span>GrabPay</span>
+                          </label>
+                <label class="radio-option">
+                              <input type="radio" name="eWalletType" value="other" />
+                              <span>Other</span>
+                          </label>
+              </div>
+            </div>
+            <div class="form-group full-width" id="eWalletSelectedLabel" style="display: none; margin-top: 15px;">
+              <p class="form-label" style="margin: 0 0 10px 0;"><strong id="eWalletSelectedName"></strong></p>
+              <label for="paymentReference" class="form-label">Reference Number</label>
+              <input type="text" id="paymentReference" name="paymentReference" class="form-input" placeholder="Enter reference number" />
+            </div>
+          </div>
+          <div class="form-row" id="eWalletCustomRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="eWalletCustomName" class="form-label">E-Wallet Name</label>
+              <input type="text" id="eWalletCustomName" name="eWalletCustomName" class="form-input" placeholder="Enter e-wallet provider name" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Items Used Section (Patient Registration) -->
+        <div class="form-section">
+          <div class="section-header">
+            <h4>Items Used During Treatment</h4>
+            <p class="section-description">Select items that will be consumed/used for inventory tracking</p>
+          </div>
+
+          <div class="items-selection" id="patientItemsSelection">
+            <div class="items-search">
+              <input type="text" id="patientItemSearch" class="form-input" placeholder="Search for items..." />
+            </div>
+
+            <div class="items-grid" id="patientItemsGrid">
+              <!-- Items will be populated by JavaScript -->
+            </div>
+
+            <div class="selected-items" id="patientSelectedItems">
+              <h5>Selected Items:</h5>
+              <div class="selected-items-list" id="patientSelectedItemsList">
+                <p class="no-items-text">No items selected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary prev-step-btn" id="prevStepBtn" style="display: none;">
+              ← Previous
+            </button>
+          <button type="button" class="btn btn-secondary" id="cancelBtn">
+              Cancel
+            </button>
+          <button type="button" class="btn btn-info next-step-btn" id="nextStepBtn">
+              Next →
+            </button>
+          <button type="button" class="btn btn-info" id="printBtn" style="display: none;">
+              Print/Export
+            </button>
+          <button type="submit" class="btn btn-primary" id="savePatientBtn" style="display: none;">
+              <span class="btn-text">Save Patient Information</span>
+              <div class="btn-spinner hidden">
+                <div class="spinner"></div>
+              </div>
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Appointment Modal -->
+  <div class="modal" id="addAppointmentModal" style="display: none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add Appointment Record</h2>
+        <button class="modal-close" id="closeAppointmentModalBtn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+      </div>
+
+      <form class="appointment-form" id="appointmentForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointmentDate" class="form-label">Appointment Date</label>
+            <input
+                type="date"
+                id="appointmentDate"
+                name="date"
+                class="form-input"
+                required
+              />
+          </div>
+          <div class="form-group">
+            <label for="appointmentTreatment" class="form-label">Treatment</label>
+            <select id="appointmentTreatment" name="treatment" class="form-select" required>
+                <option value="" disabled selected>Select treatment</option>
+              </select>
+          </div>
+        </div>
+
+        <!-- Applicable Info (Appointment Modal) -->
+        <div class="form-section">
+          <h4 class="section-title">Applicable Info</h4>
+          <div id="applicableInfoChips" class="consent-chips"></div>
+        </div>
+
+        <!-- Consent Forms -->
+        <div class="form-section">
+          <h4 class="section-title">Consent Forms</h4>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <div id="appointmentConsentCheckboxes" class="consent-checkboxes"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointmentStaff" class="form-label">Staff/Employee</label>
+            <select id="appointmentStaff" name="staff" class="form-select" required>
+                <option value="">Select staff member</option>
+                <!-- Will be populated by JavaScript -->
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="appointmentAmount" class="form-label">Price (₱)</label>
+            <input
+                type="number"
+                id="appointmentAmount"
+                name="amount"
+                class="form-input no-spinner"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                readonly
+              />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointmentDiscountType" class="form-label">Discount Type</label>
+            <select id="appointmentDiscountType" class="form-select">
+                <option value="amount">Amount (₱)</option>
+                <option value="percent">Percent (%)</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="appointmentDiscount" class="form-label">Discount</label>
+            <input type="number" id="appointmentDiscount" class="form-input no-spinner" min="0" step="0.01" placeholder="0.00" />
+          </div>
+          <div class="form-group">
+            <label for="appointmentTotal" class="form-label">Total After Discount (₱)</label>
+            <input type="number" id="appointmentTotal" class="form-input no-spinner" min="0" step="0.01" placeholder="0.00" readonly />
+          </div>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="form-section">
+          <h4>Payment Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Payment Status</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentStatus" value="partial" />
+                    <span>Partial Amount</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentStatus" value="full" checked />
+                    <span>Paid in Full</span>
+                  </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payment Method</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentMethod" value="cash" checked />
+                    <span>Cash</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentMethod" value="bank_transfer" />
+                    <span>Bank Transfer</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentMethod" value="e_wallet" />
+                    <span>E-Wallet</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentPaymentMethod" value="credit_card" />
+                    <span>Credit Card</span>
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- E-Wallet Type Selection for Appointment -->
+          <div class="form-row" id="appointmentEWalletTypeRow" style="display: none;">
+            <div class="form-group full-width">
+              <label class="form-label">Select E-Wallet Type *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="appointmentEWalletType" value="gcash" />
+                    <span>GCash</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentEWalletType" value="paymaya" />
+                    <span>PayMaya</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentEWalletType" value="grabpay" />
+                    <span>GrabPay</span>
+                  </label>
+                <label class="radio-option">
+                    <input type="radio" name="appointmentEWalletType" value="other" />
+                    <span>Other</span>
+                  </label>
+              </div>
+            </div>
+            <div class="form-group full-width" id="appointmentEWalletSelectedLabel"
+              style="display: none; margin-top: 15px;">
+              <p class="form-label" style="margin: 0 0 10px 0;"><strong id="appointmentEWalletSelectedName"></strong>
+              </p>
+              <label for="appointmentReference" class="form-label">Reference Number</label>
+              <input type="text" id="appointmentReference" name="appointmentReference" class="form-input" placeholder="Enter reference number" />
+            </div>
+          </div>
+          <div class="form-row" id="appointmentEWalletCustomRow" style="display: none;">
+            <div class="form-group full-width">
+              <label for="appointmentEWalletCustomName" class="form-label">E-Wallet Name</label>
+              <input type="text" id="appointmentEWalletCustomName" name="appointmentEWalletCustomName" class="form-input" placeholder="Enter e-wallet provider name" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointmentDownPayment" class="form-label">Down Payment</label>
+              <input type="number" id="appointmentDownPayment" name="downPayment" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+            <div class="form-group">
+              <label for="appointmentCashPayment" class="form-label">Cash Payment</label>
+              <input type="number" id="appointmentCashPayment" name="cashPayment" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointmentBankTransfer" class="form-label">Bank/EWallet/Credit</label>
+              <input type="number" id="appointmentBankTransfer" name="bankTransfer" class="form-input" min="0" step="0.01" placeholder="0.00" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="appointmentNotes" class="form-label">Notes (Optional)</label>
+            <textarea
+                id="appointmentNotes"
+                name="notes"
+                class="form-input"
+                placeholder="Additional notes"
+                rows="3"
+              ></textarea>
+          </div>
+        </div>
+
+        <div class="form-row treatment-card-checkbox-row">
+          <label class="checkbox-container treatment-card-checkbox">
+              <input type="checkbox" id="trackTreatmentCard" name="trackTreatmentCard">
+              <span class="checkbox-label">Create Treatment Card</span>
+            </label>
+        </div>
+        <div class="form-row" id="treatmentCardDaysRow" style="display: none;">
+          <div class="form-group">
+            <label for="treatmentCardDays" class="form-label">Number of Days/Slots</label>
+            <input type="number" id="treatmentCardDays" class="form-input no-spinner" min="1" max="8" value="7" />
+          </div>
+        </div>
+
+        <!-- Items Used Section -->
+        <div class="form-section">
+          <div class="section-header">
+            <h4>Items Used During Treatment</h4>
+            <p class="section-description">Select items that will be consumed/used for inventory tracking</p>
+          </div>
+
+          <div class="items-selection" id="itemsSelection">
+            <div class="items-search">
+              <input
+                  type="text"
+                  id="itemSearch"
+                  class="form-input"
+                  placeholder="Search for items..."
+                />
+            </div>
+
+            <div class="items-grid" id="itemsGrid">
+              <!-- Items will be populated by JavaScript -->
+            </div>
+
+            <div class="selected-items" id="selectedItems">
+              <h5>Selected Items:</h5>
+              <div class="selected-items-list" id="selectedItemsList">
+                <p class="no-items-text">No items selected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelAppointmentBtn">
+              Cancel
+            </button>
+          <button type="submit" class="btn btn-primary" id="saveAppointmentBtn">
+              <span class="btn-text">Add Appointment</span>
+              <div class="btn-spinner hidden">
+                <div class="spinner"></div>
+              </div>
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Patient Details Modal -->
+  <div class="modal modal-lg" id="patientDetailsModal" style="display: none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="patientDetailsTitle">Patient Details</h2>
+        <div class="modal-header-actions">
+          <button class="btn btn-primary" id="exportPatientPdfBtn" title="Export to PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="19" x2="12" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="9,16 12,19 15,16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Export
+            </button>
+          <button class="modal-close" id="closeDetailsModalBtn">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="18"
+                  y1="6"
+                  x2="6"
+                  y2="18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="patient-details-header">
+          <div class="patient-info">
+            <div class="patient-name-contact">
+              <h3 id="detailsPatientName">Patient Name</h3>
+              <p class="patient-mobile" id="detailsPatientMobile">Mobile: </p>
+            </div>
+            <p class="patient-stats">
+              <span id="detailsTotalAppointments">0 appointments</span> •
+              <span id="detailsTotalSpent">$0.00 total spent</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="appointments-history">
+          <h4>Appointment History</h4>
+          <div class="appointments-list" id="appointmentsList">
+            <!-- Appointments will be populated here -->
+          </div>
+        </div>
+
+        <div class="appointments-history" style="margin-top: 20px;">
+          <h4>Treatment Cards</h4>
+          <div class="appointments-list" id="treatmentCardsList">
+            <!-- Treatment cards will be listed here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage Treatments Modal -->
+  <div class="modal" id="manageTreatmentsModal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Manage Treatments</h2>
+        <button class="modal-close" id="closeManageTreatmentsBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newTreatmentName" class="form-label">Treatment Name</label>
+            <input type="text" id="newTreatmentName" class="form-input" placeholder="e.g., Acne Facial or verylongwordwithoutspaces" />
+          </div>
+          <div class="form-group">
+            <label for="newTreatmentPrice" class="form-label">Price (₱)</label>
+            <input type="number" id="newTreatmentPrice" class="form-input" min="0" step="0.01" placeholder="0.00" />
+          </div>
+        </div>
+        <button class="btn btn-primary" id="addTreatmentBtn">Add Treatment</button>
+        <ul id="treatmentsList" style="margin-top: 16px;"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage Consents Modal -->
+  <div class="modal" id="manageConsentsModal" style="display:none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Manage Consent Forms</h2>
+        <button class="modal-close" id="closeManageConsentsBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="consentTitleGlobal" class="form-label">Title</label>
+            <input type="text" id="consentTitleGlobal" class="form-input" placeholder="e.g., General Treatment Consent" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="consentContentGlobal" class="form-label">Content</label>
+            <textarea id="consentContentGlobal" class="form-textarea" rows="4" placeholder="Consent details..."></textarea>
+          </div>
+        </div>
+        <div class="modal-actions" style="justify-content:flex-start; gap:8px;">
+          <button class="btn btn-primary" id="addConsentGlobalBtn">Add Consent</button>
+          <button class="btn btn-secondary hidden" id="updateConsentGlobalBtn">Update</button>
+          <button class="btn btn-secondary hidden" id="cancelConsentGlobalEditBtn">Cancel</button>
+        </div>
+        <ul id="consentsList" style="margin-top:16px;"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archive Manager Modal -->
+  <div class="modal" id="archiveManagerModal" style="display:none;">
+    <div class="modal-content modal-lg" style="max-width: 1000px;">
+      <div class="modal-header">
+        <h2>Archived Patients</h2>
+        <button class="modal-close" id="closeArchiveManagerBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="archiveMonths">Archive after inactivity</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="number" id="archiveMonths" class="form-input" min="1" value="6" style="width:100px;"/>
+              <span>months of inactivity</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-container">
+                <input type="checkbox" id="autoArchiveEnabled" checked />
+                <span class="checkbox-label">Enable auto-archive detection</span>
+              </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="retentionDays">Archive Retention Period</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="number" id="retentionDays" class="form-input" min="1" value="730" style="width:100px;"/>
+              <span>days before permanent deletion</span>
+            </div>
+            <small style="color:#6b7280;margin-top:4px;display:block;">Default: 730 days (2 years)</small>
+          </div>
+        </div>
+        <div class="table-wrapper" style="margin-top:12px;">
+          <table class="employees-table">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Last Activity</th>
+                <th>Status</th>
+                <th>Archived Entries</th>
+              </tr>
+            </thead>
+            <tbody id="archiveTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="openArchiveBtn">Open Archive</button>
+        <button class="btn btn-secondary" id="saveArchiveSettingsBtn">Save Settings</button>
+        <button class="btn btn-secondary" id="closeArchiveBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archived Patient Details Modal -->
+  <div class="modal" id="archivedPatientDetailsModal" style="display:none;">
+    <div class="modal-content modal-md" style="max-width: 500px;">
+      <div class="modal-header">
+        <h2>Archived Patient Details</h2>
+        <button class="modal-close" id="closePatientDetailsModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="archivedPatientDetailsContent" class="details-grid"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="closePatientDetailsBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archived Patients Browser Modal -->
+  <div class="modal" id="archivedPatientsBrowserModal" style="display:none;">
+    <div class="modal-content modal-lg" style="max-width: 1000px;">
+      <div class="modal-header">
+        <h2>Archived Patients</h2>
+        <button class="modal-close" id="closeArchivedBrowserBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="archivedPatientsList"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="closeArchivedBrowserBtn2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" id="deleteModal" style="display: none">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h2>Delete Patient</h2>
+        <button class="modal-close" id="closeDeleteModalBtn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          Are you sure you want to delete
+          <strong id="deletePatientName"></strong>? This action cannot be
+          undone and will remove all appointment history.
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">
+            Cancel
+          </button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+            Delete
+          </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Settings Panel -->
+  <div id="settingsContainer"></div>
+
+  <!-- Receipt Modal -->
+  <div id="receiptModal" class="modal" style="display: none;">
+    <div class="modal-content receipt-modal-content">
+      <div class="modal-header">
+        <h2>Receipt</h2>
+        <button class="modal-close-btn" onclick="closeReceiptModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="receiptContent" class="receipt-content">
+          <!-- Receipt will be generated here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeReceiptModal()">Close</button>
+        <button class="btn btn-secondary" onclick="downloadReceiptPDF()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline; margin-right: 6px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download PDF
+        </button>
+        <button class="btn btn-primary" onclick="printReceipt()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline; margin-right: 6px;">
+            <path d="M6 9V2h12v7M6 9h12v9H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 13h8M8 17h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Print Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/fallback.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/audit-logger.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="js/patients.js"></script>
+  <script>
+    // Load settings panel
+      fetch('components/settings-panel.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('settingsContainer').innerHTML = html;
+          // Initialize settings after loading
+          if (typeof initializeSettings === 'function') {
+            initializeSettings();
+          }
+        });
+  </script>
+</body>
+
+</html>

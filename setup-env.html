@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Setup - Ink and Arch</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f8fafc;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f2937;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 16px;
+        }
+        .env-var {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .env-var label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        .env-var input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+        }
+        .env-var .description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+        .button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 8px 4px;
+        }
+        .button:hover {
+            background: #1d4ed8;
+        }
+        .button.secondary {
+            background: #6b7280;
+        }
+        .button.secondary:hover {
+            background: #4b5563;
+        }
+        .output {
+            background: #111827;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            display: none;
+        }
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .status.success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        .status.warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+        .step {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Ink and Arch - Environment Setup</h1>
+        
+        <div class="status warning">
+            <strong>⚠️ Important:</strong> This page is for development and initial setup only. 
+            Do not include this file in your production deployment.
+        </div>
+
+        <div class="step">
+            <h3>Step 1: MongoDB Atlas Configuration</h3>
+            <p>Enter your MongoDB Atlas connection details. These will be used to generate the environment variables for Cloudflare Pages.</p>
+            
+            <div class="env-var">
+                <label for="mongoApiUrl">MongoDB API URL</label>
+                <input type="text" id="mongoApiUrl" placeholder="https://data.mongodb-api.com/app/data-xxxxx/endpoint/data/v1">
+                <div class="description">
+                    Get this from MongoDB Atlas → Data API section. It should include your App ID.
+                </div>
+            </div>
+
+            <div class="env-var">
+                <label for="mongoApiKey">MongoDB API Key</label>
+                <input type="password" id="mongoApiKey" placeholder="Your MongoDB Data API Key">
+                <div class="description">
+                    Create this in MongoDB Atlas → Data API → API Keys. Ensure it has read/write permissions.
+                </div>
+            </div>
+
+            <div class="env-var">
+                <label for="mongoDataSource">Data Source Name</label>
+                <input type="text" id="mongoDataSource" value="Cluster0" placeholder="Cluster0">
+                <div class="description">
+                    Usually "Cluster0" unless you named your cluster differently.
+                </div>
+            </div>
+
+            <div class="env-var">
+                <label for="mongoDatabase">Database Name</label>
+                <input type="text" id="mongoDatabase" value="inkandarch" placeholder="inkandarch">
+                <div class="description">
+                    The database name where your clinic data will be stored.
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Generate Configuration</h3>
+            <button class="button" onclick="generateConfig()">Generate Environment Variables</button>
+            <button class="button secondary" onclick="testConnection()">Test MongoDB Connection</button>
+            <button class="button secondary" onclick="validateConfig()">Validate Configuration</button>
+        </div>
+
+        <div id="output" class="output"></div>
+
+        <div class="step">
+            <h3>Step 3: Cloudflare Pages Setup</h3>
+            <ol>
+                <li>Go to your Cloudflare Pages dashboard</li>
+                <li>Select your project</li>
+                <li>Navigate to <strong>Settings → Environment Variables</strong></li>
+                <li>Add the environment variables generated above</li>
+                <li>Redeploy your application</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Security Checklist</h3>
+            <ul>
+                <li>✅ MongoDB API key has minimal required permissions</li>
+                <li>✅ IP whitelist configured in MongoDB Atlas</li>
+                <li>✅ Environment variables are set in Cloudflare Pages (not in code)</li>
+                <li>✅ This setup file is excluded from production deployment</li>
+                <li>✅ API key is kept secure and not shared</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function generateConfig() {
+            const apiUrl = document.getElementById('mongoApiUrl').value.trim();
+            const apiKey = document.getElementById('mongoApiKey').value.trim();
+            const dataSource = document.getElementById('mongoDataSource').value.trim();
+            const database = document.getElementById('mongoDatabase').value.trim();
+
+            if (!apiUrl || !apiKey || !dataSource || !database) {
+                showOutput('❌ Please fill in all required fields.', 'error');
+                return;
+            }
+
+            const envVars = `# Environment Variables for Cloudflare Pages
+# Copy these to your Cloudflare Pages project settings
+
+MONGODB_API_URL=${apiUrl}
+MONGODB_API_KEY=${apiKey}
+MONGODB_DATA_SOURCE=${dataSource}
+MONGODB_DATABASE=${database}
+
+# For Cloudflare Pages CLI deployment:
+# wrangler pages deploy public --env MONGODB_API_URL="${apiUrl}" --env MONGODB_API_KEY="${apiKey}" --env MONGODB_DATA_SOURCE="${dataSource}" --env MONGODB_DATABASE="${database}"
+
+# Copy the above variables to:
+# Cloudflare Dashboard → Pages → Your Project → Settings → Environment Variables`;
+
+            showOutput(envVars);
+            
+            // Also generate a test script
+            setTimeout(() => {
+                showStatus('✅ Environment variables generated successfully!', 'success');
+            }, 100);
+        }
+
+        async function testConnection() {
+            const apiUrl = document.getElementById('mongoApiUrl').value.trim();
+            const apiKey = document.getElementById('mongoApiKey').value.trim();
+            const dataSource = document.getElementById('mongoDataSource').value.trim();
+            const database = document.getElementById('mongoDatabase').value.trim();
+
+            if (!apiUrl || !apiKey || !dataSource || !database) {
+                showStatus('❌ Please fill in all fields before testing.', 'error');
+                return;
+            }
+
+            showStatus('🔄 Testing MongoDB connection...', 'warning');
+
+            try {
+                const response = await fetch(`${apiUrl}/action/findOne`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'api-key': apiKey
+                    },
+                    body: JSON.stringify({
+                        collection: 'patients',
+                        database: database,
+                        dataSource: dataSource,
+                        filter: { '_id': { '$exists': true } },
+                        limit: 1
+                    })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showStatus('✅ MongoDB connection successful!', 'success');
+                    showOutput(`Connection test successful!\nResponse: ${JSON.stringify(result, null, 2)}`);
+                } else {
+                    const error = await response.text();
+                    showStatus(`❌ MongoDB connection failed: ${response.status}`, 'error');
+                    showOutput(`Error: ${error}`);
+                }
+            } catch (error) {
+                showStatus(`❌ Connection error: ${error.message}`, 'error');
+                showOutput(`Network error: ${error.message}`);
+            }
+        }
+
+        function validateConfig() {
+            const apiUrl = document.getElementById('mongoApiUrl').value.trim();
+            const apiKey = document.getElementById('mongoApiKey').value.trim();
+            const dataSource = document.getElementById('mongoDataSource').value.trim();
+            const database = document.getElementById('mongoDatabase').value.trim();
+
+            const issues = [];
+
+            if (!apiUrl.includes('mongodb-api.com')) {
+                issues.push('❌ API URL should contain "mongodb-api.com"');
+            }
+
+            if (!apiUrl.includes('/app/data-')) {
+                issues.push('❌ API URL should include your App ID');
+            }
+
+            if (apiKey.length < 20) {
+                issues.push('❌ API Key seems too short');
+            }
+
+            if (!dataSource) {
+                issues.push('❌ Data Source name is required');
+            }
+
+            if (!database) {
+                issues.push('❌ Database name is required');
+            }
+
+            if (database.includes(' ') || database.includes('.')) {
+                issues.push('❌ Database name should not contain spaces or dots');
+            }
+
+            if (issues.length === 0) {
+                showStatus('✅ Configuration validation passed!', 'success');
+            } else {
+                showStatus(`❌ Configuration issues found:\n${issues.join('\n')}`, 'error');
+            }
+        }
+
+        function showOutput(content, type = '') {
+            const output = document.getElementById('output');
+            output.textContent = content;
+            output.style.display = 'block';
+            
+            if (type === 'error') {
+                output.style.background = '#7f1d1d';
+                output.style.color = '#fecaca';
+            } else {
+                output.style.background = '#111827';
+                output.style.color = '#f9fafb';
+            }
+        }
+
+        function showStatus(message, type = 'warning') {
+            // Remove existing status
+            const existingStatus = document.querySelector('.status.dynamic');
+            if (existingStatus) {
+                existingStatus.remove();
+            }
+
+            const status = document.createElement('div');
+            status.className = `status ${type} dynamic`;
+            status.textContent = message;
+            
+            document.querySelector('.container').appendChild(status);
+            
+            // Auto-remove after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    if (status.parentNode) {
+                        status.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Initialize with placeholder values
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date for setup tracking
+            console.log('Environment setup page loaded at:', new Date().toISOString());
+        });
+    </script>
+</body>
+</html>
